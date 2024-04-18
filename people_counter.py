@@ -232,6 +232,10 @@ def people_counter():
 		# centroids with (2) the newly computed object centroids
 		objects = ct.update(rects)
 
+		text = "Total people inside: {}".format(len(objects.items()))
+		cv2.putText(frame, text, (265, H - ((i * 20) + 60)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+
+
 		# loop over the tracked objects
 		for (objectID, centroid) in objects.items():
 			# check to see if a trackable object exists for the current
@@ -314,9 +318,9 @@ def people_counter():
 			text = "{}: {}".format(k, v)
 			cv2.putText(frame, text, (10, H - ((i * 20) + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 0), 2)
 
-		for (i, (k, v)) in enumerate(info_total):
-			text = "{}: {}".format(k, v)
-			cv2.putText(frame, text, (265, H - ((i * 20) + 60)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+		# for (i, (k, v)) in enumerate(info_total):
+		# 	text = "{}: {}".format(k, v)
+		# 	cv2.putText(frame, text, (265, H - ((i * 20) + 60)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
 		# initiate a simple log to save the counting data
 		if config["Log"]:
